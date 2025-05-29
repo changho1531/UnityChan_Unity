@@ -1,2 +1,2 @@
-# UnityChan_Unity
-MMO 유니티짱 실습 파일
+# MMO_Unity
+인프런 강의 프로젝트 베이스
