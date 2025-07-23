@@ -31,6 +31,7 @@ public class PlayerController : BaseController
         //몬스터가 내 사정거리보다 가까우면 공격
         if (_lockTarget != null)
         {
+            _destPos = _lockTarget.transform.position;
             float distance = (_destPos - transform.position).magnitude; //나와 몬스터의 거리
             if (distance <= 1)
             {

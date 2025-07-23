@@ -41,6 +41,7 @@ public abstract class BaseController : MonoBehaviour
     {
         Init();
     }
+
     void Update()
     {
 
