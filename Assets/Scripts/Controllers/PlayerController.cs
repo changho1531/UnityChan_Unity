@@ -17,6 +17,7 @@ public class PlayerController : BaseController
 
     public override void Init()
     {
+        worldObjectType = Define.WorldObject.Player;
         _stat = GetComponent<PlayerStat>();
 
         Managers.Input.MouseAction -= OnMouseEvent;
@@ -48,11 +49,6 @@ public class PlayerController : BaseController
         }
         else
         {
-            NavMeshAgent nma = gameObject.GetOrAddComponent<NavMeshAgent>();
-            float moveDist = Mathf.Clamp(_stat.MoveSpeed * Time.deltaTime, 0, dir.magnitude);
-            //nma.CalculatePath
-            nma.Move(dir.normalized * moveDist);
-
             Debug.DrawRay(transform.position, dir.normalized, Color.green);
 
             //앞에 오브젝트가 있어도 마우스 클릭상태이면 이동
@@ -70,7 +66,8 @@ public class PlayerController : BaseController
             //    return;
             //}
 
-            //transform.position += dir.normalized * moveDist;
+            float moveDist = Mathf.Clamp(_stat.MoveSpeed * Time.deltaTime, 0, dir.magnitude);
+            transform.position += dir.normalized * moveDist;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), 20 * Time.deltaTime);
         }
     }
